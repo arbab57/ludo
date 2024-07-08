@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --height: 260px;
+    --width: 260px;
+    --sq-col-height: 40px;
+    --sq-row-height: 40px;
+    --sq-col-width: 40px;
+    --sq-row-width: 40px;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.row-01 {
+    display: flex;
+
+}
+
+.house {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--height);
+    height: var(--width);
+}
+
+.house-yellow {
+    background-color: yellow;
+}
+.house-red {
+    background-color: #c20e0e;
+}
+.house-green {
+    background-color: green;
+}
+.house-blue {
+    background-color: blue;
+}
+
+.con-pieces-in-house {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.row-inhouse {
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+
+.con-squares {
+    display: flex;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--sq-col-width);
+    height: var(--sq-col-height);
+    border: 1px solid black;
+}
+
+.con-ludo {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#screen {
+    font-size: 2.5rem;
+}
+
+
+.square-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--sq-row-width);
+    height: var(--sq-row-height);
+    border: 1px solid black;
+}
+
+.piece {
+    background-color: blue;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.piecer {
+    background-color: #f21f0b;
+}
+.pieceb {
+    background-color: #111d99;
+}
+.pieceg {
+    background-color: #2a9148;
+}
+.piecey {
+    background-color: #ffc50a;
+}
+
+.pieceb::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 2.5px;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: #111d99;
+
+
+}
+
+.d-flex-row {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.bg-red {
+    background-color: #c20e0e;
+}
+.bg-green {
+    background-color: green;
+}
+.bg-yellow {
+    background-color: yellow;
+}
+.bg-blue {
+    background-color: blue;
+}
+
+.ui {
+    background-color: #111d99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 300px;
+    height: 250px;
+}
+
+#btn-roll {
+    background-color: black;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+#screen, #turn-screen{
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}
+
+#input-roll {
+    padding: 0.3rem 1rem;
+}
+
+.active {
+    background-color: #11995e !important;
+
+}
