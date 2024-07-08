@@ -50,6 +50,7 @@ const sq49 = document.querySelector("#sq-49");
 const sq50 = document.querySelector("#sq-50");
 const sq51 = document.querySelector("#sq-51");
 const sq52 = document.querySelector("#sq-52");
+const sq53 = document.querySelector("#sq-53");
 
 const sqg01 = document.querySelector("#sq-g01");
 const sqg02 = document.querySelector("#sq-g02");
@@ -94,6 +95,13 @@ const spr1 = document.querySelector("#r-01");
 const spr2 = document.querySelector("#r-02");
 const spr3 = document.querySelector("#r-03");
 const spr4 = document.querySelector("#r-04");
+
+const sqwg = document.querySelector("#sq-wg");
+const sqwy = document.querySelector("#sq-wy");
+const sqwb = document.querySelector("#sq-wb");
+const sqwr = document.querySelector("#sq-wr");
+
+const piecesArray = document.querySelectorAll(".piece");
 
 const opg = 3;
 const opy = 16;
@@ -163,6 +171,7 @@ const squares = [
   sq50,
   sq51,
   sq52,
+  sq53,
 
   sqg01,
   sqg02,
@@ -207,106 +216,111 @@ const squares = [
   spr2,
   spr3,
   spr4,
+
+  sqwg,
+  sqwy,
+  sqwb,
+  sqwr,
 ];
 
 const pieces = [
   {
     pieceName: "g1",
-    startingPostion: 72,
-    currentPostion: 72,
-    html: `<div id="pieceg1" class="piece pieceg" ></div>`,
+    startingPostion: 73,
+    currentPostion: 73,
+    html: `<div id="pieceg1" class="piece pieceg"></div>`,
   },
   {
     pieceName: "g2",
-    startingPostion: 73,
-    currentPostion: 73,
+    startingPostion: 74,
+    currentPostion: 74,
     html: `<div id="pieceg2" class="piece pieceg" ></div>`,
   },
   {
     pieceName: "g3",
-    startingPostion: 74,
-    currentPostion: 74,
+    startingPostion: 75,
+    currentPostion: 75,
     html: `<div id="pieceg3" class="piece pieceg" ></div>`,
   },
   {
     pieceName: "g4",
-    startingPostion: 75,
-    currentPostion: 75,
+    startingPostion: 76,
+    currentPostion: 76,
     html: `<div id="pieceg4" class="piece pieceg" ></div>`,
   },
 
   {
     pieceName: "y1",
-    startingPostion: 76,
-    currentPostion: 76,
+    startingPostion: 77,
+    currentPostion: 77,
     html: `<div id="piecey1" class="piece piecey" ></div>`,
   },
   {
     pieceName: "y2",
-    startingPostion: 77,
-    currentPostion: 77,
+    startingPostion: 78,
+    currentPostion: 78,
     html: `<div id="piecey2" class="piece piecey" ></div>`,
   },
   {
     pieceName: "y3",
-    startingPostion: 78,
-    currentPostion: 78,
+    startingPostion: 79,
+    currentPostion: 79,
     html: `<div id="piecey3" class="piece piecey" ></div>`,
   },
   {
     pieceName: "y4",
-    startingPostion: 79,
-    currentPostion: 79,
+    startingPostion: 80,
+    currentPostion: 80,
     html: `<div id="piecey4" class="piece piecey" ></div>`,
   },
 
   {
     pieceName: "b1",
-    startingPostion: 80,
-    currentPostion: 80,
+    startingPostion: 81,
+    currentPostion: 81,
     html: `<div id="pieceb1" class="piece pieceb" ></div>`,
   },
   {
     pieceName: "b2",
-    startingPostion: 81,
-    currentPostion: 81,
+    startingPostion: 82,
+    currentPostion: 82,
     html: `<div id="pieceb2" class="piece pieceb" ></div>`,
   },
   {
     pieceName: "b3",
-    startingPostion: 82,
-    currentPostion: 82,
+    startingPostion: 83,
+    currentPostion: 83,
     html: `<div id="pieceb3" class="piece pieceb" ></div>`,
   },
   {
     pieceName: "b4",
-    startingPostion: 83,
-    currentPostion: 83,
+    startingPostion: 84,
+    currentPostion: 84,
     html: `<div id="pieceb4" class="piece pieceb" ></div>`,
   },
 
   {
     pieceName: "r1",
-    startingPostion: 84,
-    currentPostion: 84,
+    startingPostion: 85,
+    currentPostion: 85,
     html: `<div id="piecer1" class="piece piecer" ></div>`,
   },
   {
     pieceName: "r2",
-    startingPostion: 85,
-    currentPostion: 85,
+    startingPostion: 86,
+    currentPostion: 86,
     html: `<div id="piecer2" class="piece piecer" ></div>`,
   },
   {
     pieceName: "r3",
-    startingPostion: 86,
-    currentPostion: 86,
+    startingPostion: 87,
+    currentPostion: 87,
     html: `<div id="piecer3" class="piece piecer" ></div>`,
   },
   {
     pieceName: "r4",
-    startingPostion: 87,
-    currentPostion: 87,
+    startingPostion: 88,
+    currentPostion: 88,
     html: `<div id="piecer4" class="piece piecer" ></div>`,
   },
 ];

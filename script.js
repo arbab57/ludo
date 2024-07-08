@@ -48,6 +48,10 @@ function render() {
       pieces[i].html
     );
   }
+  const piecesArray = document.querySelectorAll(".piece");
+  for (let i = 0; i < piecesArray.length; i++) {
+    piecesArray[i].innerHTML = `<i class="fa-solid fa-star"></i>`;
+  }
 
   turnScreen.innerText = "Turn: " + turns[turn];
 }
@@ -71,19 +75,65 @@ function checkIfOut(house) {
   }
 
   for (let i = loopNumber; i < loopLimit; i++) {
-    if (pieces[i].currentPostion < 51) {
+    if (pieces[i].currentPostion < 72) {
       checkTurn();
       return;
     }
   }
-  // for (let i = loopNumber; i < loopLimit; i++) {
-  //   console.log(pieces[i].currentPostion);
-  // }
-  turn++;
-  turn > 3 ? (turn = 0) : null;
+  incrementTurn();
   turnScreen.innerText = "Turn: " + turns[turn];
   hasRolled = false;
   btnRoll.classList.add("active");
+}
+
+function incrementTurn() {
+  turn++;
+  turn > 3 ? (turn = 0) : null;
+}
+function canGoInHouse() {
+  if (pieces[currentPiece].currentPostion === 2 && turns[turn] === "green") {
+    pieces[currentPiece].currentPostion = 53;
+    positionTOBe = positionTOBe + 51;
+    return;
+  }
+  if (pieces[currentPiece].currentPostion === 15 && turns[turn] === "yellow") {
+    pieces[currentPiece].currentPostion = 58;
+    positionTOBe = positionTOBe + 43;
+    return;
+  }
+  if (pieces[currentPiece].currentPostion === 28 && turns[turn] === "blue") {
+    pieces[currentPiece].currentPostion = 63;
+    positionTOBe = positionTOBe + 35;
+    return;
+  }
+  if (pieces[currentPiece].currentPostion === 41 && turns[turn] === "red") {
+    pieces[currentPiece].currentPostion = 68;
+    positionTOBe = positionTOBe + 27;
+    return;
+  }
+}
+
+function didWin() {
+  if (pieces[currentPiece].currentPostion >= 58 && turns[turn] === "green") {
+    pieces[currentPiece].currentPostion = 89;
+    positionTOBe = 89;
+    return;
+  }
+  if (pieces[currentPiece].currentPostion >= 63 && turns[turn] === "yellow") {
+    pieces[currentPiece].currentPostion = 90;
+    positionTOBe = 90;
+    return;
+  }
+  if (pieces[currentPiece].currentPostion >= 68 && turns[turn] === "blue") {
+    pieces[currentPiece].currentPostion = 91;
+    positionTOBe = 91;
+    return;
+  }
+  if (pieces[currentPiece].currentPostion >= 73 && turns[turn] === "red") {
+    pieces[currentPiece].currentPostion = 92;
+    positionTOBe = 92;
+    return;
+  }
 }
 
 btnRoll.addEventListener("click", rollFunction);
@@ -103,8 +153,6 @@ function rollFunction() {
     }
   }
 }
-
-// sadasdsda
 
 function checkTurn() {
   removeEvent();
@@ -137,7 +185,7 @@ function checkTurn() {
 function pieceFunction(num, openingPosition) {
   removeEvent();
   currentPiece = num;
-  if (pieces[num].currentPostion > 51) {
+  if (pieces[num].currentPostion > 72) {
     if (roll === 6) {
       pieces[num].currentPostion = openingPosition;
       hasRolled = false;
@@ -155,15 +203,16 @@ function pieceFunction(num, openingPosition) {
 function moveFunction() {
   if (pieces[currentPiece].currentPostion !== positionTOBe) {
     pieces[currentPiece].currentPostion++;
-    if (pieces[currentPiece].currentPostion > 51) {
+    if (pieces[currentPiece].currentPostion === 52) {
       pieces[currentPiece].currentPostion = 0;
       positionTOBe = positionTOBe - 52;
     }
+    canGoInHouse();
+    didWin();
     render();
   } else {
     clearInterval(interval);
-    turn++;
-    turn > 3 ? (turn = 0) : null;
+    incrementTurn();
     hasRolled = false;
     btnRoll.classList.add("active");
     turnScreen.innerText = "Turn: " + turns[turn];

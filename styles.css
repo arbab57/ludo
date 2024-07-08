@@ -112,6 +112,9 @@ main {
     height: 20px;
     cursor: pointer;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .piecer {
     background-color: #f21f0b;
@@ -126,7 +129,7 @@ main {
     background-color: #ffc50a;
 }
 
-.pieceb::before {
+/* .pieceb::before {
     content: "";
     position: absolute;
     top: -9px;
@@ -137,7 +140,7 @@ main {
     background-color: #111d99;
 
 
-}
+} */
 
 .d-flex-row {
     display: flex;
@@ -205,4 +208,30 @@ main {
 .active {
     background-color: #11995e !important;
 
+}
+
+.con-win {
+    width: 150px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+i {
+    color: white;
+    font-size: 0.9rem;
+    
 }
