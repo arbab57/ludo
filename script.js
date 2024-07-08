@@ -104,6 +104,8 @@ function rollFunction() {
   }
 }
 
+// sadasdsda
+
 function checkTurn() {
   removeEvent();
   if (turns[turn] === "green") {
