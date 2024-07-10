@@ -101,8 +101,6 @@ const sqwy = document.querySelector("#sq-wy");
 const sqwb = document.querySelector("#sq-wb");
 const sqwr = document.querySelector("#sq-wr");
 
-const piecesArray = document.querySelectorAll(".piece");
-
 const opg = 3;
 const opy = 16;
 const opb = 29;

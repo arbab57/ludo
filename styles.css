@@ -12,6 +12,7 @@
     --sq-row-height: 40px;
     --sq-col-width: 40px;
     --sq-row-width: 40px;
+    --green-house: #1b6435;
 }
 .center {
     display: flex;
@@ -47,7 +48,8 @@ main {
     background-color: #c20e0e;
 }
 .house-green {
-    background-color: green;
+    background-color: var(--green-house);
+    ;
 }
 .house-blue {
     background-color: blue;
@@ -160,7 +162,8 @@ main {
     background-color: #c20e0e;
 }
 .bg-green {
-    background-color: green;
+    background-color: var(--green-house);
+    ;
 }
 .bg-yellow {
     background-color: yellow;
@@ -234,4 +237,9 @@ i {
     color: white;
     font-size: 0.9rem;
     
+}
+
+.house .piece {
+    width: 30px;
+    height: 30px;
 }
