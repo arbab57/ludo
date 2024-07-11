@@ -49,6 +49,7 @@ function render() {
       pieces[i].html
     );
   }
+
   const piecesArray = document.querySelectorAll(".piece");
   for (let i = 0; i < piecesArray.length; i++) {
     piecesArray[i].innerHTML = `<i class="fa-solid fa-star"></i>`;
