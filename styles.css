@@ -42,7 +42,7 @@ main {
 }
 
 .house-yellow {
-    background-color: yellow;
+    background-color: #d3cb27;
 }
 .house-red {
     background-color: #c20e0e;
@@ -53,6 +53,19 @@ main {
 }
 .house-blue {
     background-color: blue;
+}
+
+.piecer {
+    background-color: #f21f0b;
+}
+.pieceb {
+    background-color: #111d99;
+}
+.pieceg {
+    background-color: #2a9148;
+}
+.piecey {
+    background-color: #ffc50a;
 }
 
 .con-pieces-in-house {
@@ -108,7 +121,6 @@ main {
 }
 
 .piece {
-    background-color: blue;
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -118,18 +130,7 @@ main {
     justify-content: center;
     align-items: center;
 }
-.piecer {
-    background-color: #f21f0b;
-}
-.pieceb {
-    background-color: #111d99;
-}
-.pieceg {
-    background-color: #2a9148;
-}
-.piecey {
-    background-color: #ffc50a;
-}
+
 
 /* .pieceb::before {
     content: "";
@@ -166,7 +167,7 @@ main {
     ;
 }
 .bg-yellow {
-    background-color: yellow;
+    background-color: #d3cb27;
 }
 .bg-blue {
     background-color: blue;
@@ -242,4 +243,12 @@ i {
 .house .piece {
     width: 30px;
     height: 30px;
+}
+
+.star {
+font-size: 0.5rem;   
+}
+
+.house .star {
+    font-size: 1rem;
 }

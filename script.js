@@ -52,7 +52,7 @@ function render() {
 
   const piecesArray = document.querySelectorAll(".piece");
   for (let i = 0; i < piecesArray.length; i++) {
-    piecesArray[i].innerHTML = `<i class="fa-solid fa-star"></i>`;
+    piecesArray[i].innerHTML = `<i class="fa-solid fa-star star"></i>`;
   }
 
   turnScreen.innerText = "Turn: " + turns[turn];
@@ -196,7 +196,7 @@ function pieceFunction(num, openingPosition) {
     } else {
       checkTurn();
     }
-  } else {
+  } else if (pieces[num].currentPostion < 72) {
     positionTOBe = roll + pieces[num].currentPostion;
     intervalForMoveFunction();
   }
