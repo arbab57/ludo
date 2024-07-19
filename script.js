@@ -3,6 +3,8 @@ window.onload = () => {
   btnRoll.classList.add("active");
 };
 
+const sound = new Audio();
+
 let roll;
 let positionTOBe;
 let interval;
@@ -11,9 +13,17 @@ let currentPiece;
 let loopNumber = 0;
 let loopLimit = 3;
 let hasRolled = false;
+let score = {
+  green: 0,
+  yellow: 0,
+  blue: 0,
+  red: 0,
+};
+let winnerboard = [];
+let scoreboard = [];
 
 function intervalForMoveFunction() {
-  interval = setInterval(moveFunction, 20);
+  interval = setInterval(moveFunction, 450);
 }
 
 function removeEvent() {
@@ -37,10 +47,70 @@ function removeEvent() {
   piecer3.removeEventListener("click", pieceFunction14);
   piecer4.removeEventListener("click", pieceFunction15);
 }
+function win() {
+  if (score.green === 4) {
+    winnerboard.shift("green");
+  }
+  if (score.yellow === 4) {
+    winnerboard.shift("yellow");
+  }
+  if (score.blue === 4) {
+    winnerboard.shift("blue");
+  }
+  if (score.red === 4) {
+    winnerboard.shift("red");
+  }
+}
+
+function ui() {
+  const uibox = document.querySelector("#uibox");
+  uibox.classList.remove("top-l", "top-r", "bot-l", "bot-r");
+  if (turns[turn] === "green") {
+    uibox.classList.add("top-r");
+  }
+  if (turns[turn] === "yellow") {
+    uibox.classList.add("bot-r");
+  }
+  if (turns[turn] === "blue") {
+    uibox.classList.add("bot-l");
+  }
+  if (turns[turn] === "red") {
+    uibox.classList.add("top-l");
+  }
+}
+
+function activePiece() {
+  for (let i = 0; i < pieces.length; i++) {
+    document.querySelector(`#${pieces[i].id}`).classList.remove("active2");
+  }
+  if (turns[turn] === "green") {
+    loopNumber = 0;
+    loopLimit = 4;
+  }
+  if (turns[turn] === "yellow") {
+    loopNumber = 4;
+    loopLimit = 8;
+  }
+  if (turns[turn] === "blue") {
+    loopNumber = 8;
+    loopLimit = 12;
+  }
+  if (turns[turn] === "red") {
+    loopNumber = 12;
+    loopLimit = 16;
+  }
+
+  for (let i = loopNumber; i < loopLimit; i++) {
+    document.querySelector(`#${pieces[i].id}`).classList.add("active2");
+  }
+}
 
 function render() {
+  ui();
+  win();
+
   for (let i = 0; i < squares.length; i++) {
-    squares[i].innerHTML = ``;
+    squares[i].innerHTML = "";
   }
 
   for (let i = 0; i < pieces.length; i++) {
@@ -83,34 +153,72 @@ function checkIfOut(house) {
     }
   }
   incrementTurn();
+
   turnScreen.innerText = "Turn: " + turns[turn];
   hasRolled = false;
   btnRoll.classList.add("active");
 }
 
 function incrementTurn() {
+  let isInGame;
+  isInGame = false;
+  let loopLimit1;
+  let loopNumber1;
   turn++;
   turn > 3 ? (turn = 0) : null;
+  if (turns[turn] === "green") {
+    loopNumber1 = 0;
+    loopLimit1 = 4;
+  }
+  if (turns[turn] === "yellow") {
+    loopNumber1 = 4;
+    loopLimit1 = 8;
+  }
+  if (turns[turn] === "blue") {
+    loopNumber1 = 8;
+    loopLimit1 = 12;
+  }
+  if (turns[turn] === "red") {
+    loopNumber1 = 12;
+    loopLimit1 = 16;
+  }
+
+  for (let i = loopNumber1; i < loopLimit1; i++) {
+    if (pieces[i].currentPostion < 89) {
+      isInGame = true;
+      break;
+    }
+  }
+
+  if (!isInGame) {
+    incrementTurn();
+  }
+
+  ui();
 }
 function canGoInHouse() {
   if (pieces[currentPiece].currentPostion === 2 && turns[turn] === "green") {
     pieces[currentPiece].currentPostion = 53;
     positionTOBe = positionTOBe + 51;
+
     return;
   }
   if (pieces[currentPiece].currentPostion === 15 && turns[turn] === "yellow") {
     pieces[currentPiece].currentPostion = 58;
     positionTOBe = positionTOBe + 43;
+
     return;
   }
   if (pieces[currentPiece].currentPostion === 28 && turns[turn] === "blue") {
     pieces[currentPiece].currentPostion = 63;
     positionTOBe = positionTOBe + 35;
+
     return;
   }
   if (pieces[currentPiece].currentPostion === 41 && turns[turn] === "red") {
     pieces[currentPiece].currentPostion = 68;
     positionTOBe = positionTOBe + 27;
+
     return;
   }
 }
@@ -119,21 +227,25 @@ function didWin() {
   if (pieces[currentPiece].currentPostion >= 58 && turns[turn] === "green") {
     pieces[currentPiece].currentPostion = 89;
     positionTOBe = 89;
+    score.green++;
     return;
   }
   if (pieces[currentPiece].currentPostion >= 63 && turns[turn] === "yellow") {
     pieces[currentPiece].currentPostion = 90;
     positionTOBe = 90;
+    score.yellow++;
     return;
   }
   if (pieces[currentPiece].currentPostion >= 68 && turns[turn] === "blue") {
     pieces[currentPiece].currentPostion = 91;
     positionTOBe = 91;
+    score.blue++;
     return;
   }
   if (pieces[currentPiece].currentPostion >= 73 && turns[turn] === "red") {
     pieces[currentPiece].currentPostion = 92;
     positionTOBe = 92;
+    score.red++;
     return;
   }
 }
@@ -157,6 +269,7 @@ function rollFunction() {
 }
 
 function checkTurn() {
+  activePiece();
   removeEvent();
   if (turns[turn] === "green") {
     pieceg1.addEventListener("click", pieceFunction0);
@@ -187,6 +300,10 @@ function checkTurn() {
 function pieceFunction(num, openingPosition) {
   removeEvent();
   currentPiece = num;
+  if (pieces[num].currentPostion >= 89) {
+    checkTurn();
+    return;
+  }
   if (pieces[num].currentPostion > 72) {
     if (roll === 6) {
       pieces[num].currentPostion = openingPosition;
@@ -196,7 +313,7 @@ function pieceFunction(num, openingPosition) {
     } else {
       checkTurn();
     }
-  } else if (pieces[num].currentPostion < 72) {
+  } else {
     positionTOBe = roll + pieces[num].currentPostion;
     intervalForMoveFunction();
   }
@@ -209,14 +326,23 @@ function moveFunction() {
       pieces[currentPiece].currentPostion = 0;
       positionTOBe = positionTOBe - 52;
     }
+    sound.src = "move-self.mp3";
+    sound.play();
     canGoInHouse();
     didWin();
     render();
   } else {
-    clearInterval(interval);
-    incrementTurn();
-    hasRolled = false;
-    btnRoll.classList.add("active");
-    turnScreen.innerText = "Turn: " + turns[turn];
+    if (roll === 6) {
+      clearInterval(interval);
+      hasRolled = false;
+      btnRoll.classList.add("active");
+      turnScreen.innerText = "Turn: " + turns[turn];
+    } else {
+      clearInterval(interval);
+      incrementTurn();
+      hasRolled = false;
+      btnRoll.classList.add("active");
+      turnScreen.innerText = "Turn: " + turns[turn];
+    }
   }
 }

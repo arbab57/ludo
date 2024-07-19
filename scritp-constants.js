@@ -106,11 +106,6 @@ const opy = 16;
 const opb = 29;
 const opr = 42;
 
-// const pieceg1 = document.querySelector("#pieceg1");
-// const pieceg2 = document.querySelector("#pieceg2");
-// const pieceg3 = document.querySelector("#pieceg3");
-// const pieceg4 = document.querySelector("#pieceg4");
-
 const btnRoll = document.querySelector("#btn-roll");
 const inputRoll = document.querySelector("#input-roll");
 const screen = document.querySelector("#screen");
@@ -227,24 +222,28 @@ const pieces = [
     startingPostion: 73,
     currentPostion: 73,
     html: `<div id="pieceg1" class="piece pieceg"></div>`,
+    id: "pieceg1",
   },
   {
     pieceName: "g2",
     startingPostion: 74,
     currentPostion: 74,
     html: `<div id="pieceg2" class="piece pieceg" ></div>`,
+    id: "pieceg2",
   },
   {
     pieceName: "g3",
     startingPostion: 75,
     currentPostion: 75,
     html: `<div id="pieceg3" class="piece pieceg" ></div>`,
+    id: "pieceg3",
   },
   {
     pieceName: "g4",
     startingPostion: 76,
     currentPostion: 76,
     html: `<div id="pieceg4" class="piece pieceg" ></div>`,
+    id: "pieceg4",
   },
 
   {
@@ -252,24 +251,28 @@ const pieces = [
     startingPostion: 77,
     currentPostion: 77,
     html: `<div id="piecey1" class="piece piecey" ></div>`,
+    id: "piecey1",
   },
   {
     pieceName: "y2",
     startingPostion: 78,
     currentPostion: 78,
     html: `<div id="piecey2" class="piece piecey" ></div>`,
+    id: "piecey2",
   },
   {
     pieceName: "y3",
     startingPostion: 79,
     currentPostion: 79,
     html: `<div id="piecey3" class="piece piecey" ></div>`,
+    id: "piecey3",
   },
   {
     pieceName: "y4",
     startingPostion: 80,
     currentPostion: 80,
     html: `<div id="piecey4" class="piece piecey" ></div>`,
+    id: "piecey4",
   },
 
   {
@@ -277,24 +280,28 @@ const pieces = [
     startingPostion: 81,
     currentPostion: 81,
     html: `<div id="pieceb1" class="piece pieceb" ></div>`,
+    id: "pieceb1",
   },
   {
     pieceName: "b2",
     startingPostion: 82,
     currentPostion: 82,
     html: `<div id="pieceb2" class="piece pieceb" ></div>`,
+    id: "pieceb2",
   },
   {
     pieceName: "b3",
     startingPostion: 83,
     currentPostion: 83,
     html: `<div id="pieceb3" class="piece pieceb" ></div>`,
+    id: "pieceb3",
   },
   {
     pieceName: "b4",
     startingPostion: 84,
     currentPostion: 84,
     html: `<div id="pieceb4" class="piece pieceb" ></div>`,
+    id: "pieceb4",
   },
 
   {
@@ -302,50 +309,32 @@ const pieces = [
     startingPostion: 85,
     currentPostion: 85,
     html: `<div id="piecer1" class="piece piecer" ></div>`,
+    id: "piecer1",
   },
   {
     pieceName: "r2",
     startingPostion: 86,
     currentPostion: 86,
     html: `<div id="piecer2" class="piece piecer" ></div>`,
+    id: "piecer2",
   },
   {
     pieceName: "r3",
     startingPostion: 87,
     currentPostion: 87,
     html: `<div id="piecer3" class="piece piecer" ></div>`,
+    id: "piecer3",
   },
   {
     pieceName: "r4",
     startingPostion: 88,
     currentPostion: 88,
     html: `<div id="piecer4" class="piece piecer" ></div>`,
+    id: "piecer4",
   },
 ];
 
 const turns = ["green", "yellow", "blue", "red"];
-
-// const piece = [
-//   pieceg1,
-//   pieceg2,
-//   pieceg3,
-//   pieceg4,
-
-//   piecey1,
-//   piecey2,
-//   piecey3,
-//   piecey4,
-
-//   pieceb1,
-//   pieceb2,
-//   pieceb3,
-//   pieceb4,
-
-//   piecer1,
-//   piecer2,
-//   piecer3,
-//   piecer4,
-// ];
 
 function pieceFunction0() {
   pieceFunction(0, opg);
