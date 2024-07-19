@@ -24,7 +24,7 @@ let scoreboard = [];
 let diceSounds = ["dice1.mp3", "dice2.mp3"];
 
 function intervalForMoveFunction() {
-  interval = setInterval(moveFunction, 450);
+  interval = setInterval(moveFunction, 400);
 }
 
 function removeEvent() {
@@ -301,10 +301,10 @@ function rollFunction() {
   if (!hasRolled) {
     // sound.src = diceSounds[1];
     // sound.play();
-    roll = Number(inputRoll.value);
-    // roll = Math.floor(Math.random() * 6 + 1);
-    // roll > 6 ? (roll = 6) : null;
-    // roll < 0 ? (roll = 1) : null;
+    // roll = Number(inputRoll.value);
+    roll = Math.floor(Math.random() * 6 + 1);
+    roll > 6 ? (roll = 6) : null;
+    roll < 0 ? (roll = 1) : null;
     screen.innerText = roll;
     hasRolled = true;
     btnRoll.classList.remove("active");
