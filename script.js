@@ -21,9 +21,10 @@ let score = {
 };
 let winnerboard = [];
 let scoreboard = [];
+let diceSounds = ["dice1.mp3", "dice2.mp3"];
 
 function intervalForMoveFunction() {
-  interval = setInterval(moveFunction, 450);
+  interval = setInterval(moveFunction, 400);
 }
 
 function removeEvent() {
@@ -252,10 +253,54 @@ function didWin() {
     return;
   }
 }
+function isAlone() {
+  let count = 0;
+  let moveItself;
+
+  if (turns[turn] === "green") {
+    for (let i = 0; i < 4; i++) {
+      if (pieces[i].currentPostion <= 72) {
+        moveItself = i;
+        count++;
+      }
+    }
+  } else if (turns[turn] === "yellow") {
+    for (let i = 4; i < 8; i++) {
+      if (pieces[i].currentPostion <= 72) {
+        moveItself = i;
+        count++;
+      }
+    }
+  } else if (turns[turn] === "blue") {
+    for (let i = 8; i < 12; i++) {
+      if (pieces[i].currentPostion <= 72) {
+        moveItself = i;
+        count++;
+      }
+    }
+  } else if (turns[turn] === "red") {
+    for (let i = 12; i < 16; i++) {
+      if (pieces[i].currentPostion <= 72) {
+        moveItself = i;
+        count++;
+      }
+    }
+  }
+
+  if (count === 1) {
+    console.log(moveItself);
+    pieceFunction(moveItself);
+    return true;
+  } else {
+    return false;
+  }
+}
 
 btnRoll.addEventListener("click", rollFunction);
 function rollFunction() {
   if (!hasRolled) {
+    // sound.src = diceSounds[1];
+    // sound.play();
     // roll = Number(inputRoll.value);
     roll = Math.floor(Math.random() * 6 + 1);
     roll > 6 ? (roll = 6) : null;
@@ -263,9 +308,13 @@ function rollFunction() {
     screen.innerText = roll;
     hasRolled = true;
     btnRoll.classList.remove("active");
+
     if (roll === 6) {
       checkTurn();
     } else {
+      if (isAlone()) {
+        return;
+      }
       checkIfOut(turns[turn]);
     }
   }
@@ -313,6 +362,8 @@ function pieceFunction(num, openingPosition) {
       hasRolled = false;
       btnRoll.classList.add("active");
       render();
+      sound.src = "move-self.mp3";
+      sound.play();
     } else {
       checkTurn();
     }
@@ -332,7 +383,9 @@ function moveFunction() {
     sound.src = "move-self.mp3";
     canGoInHouse();
     didWin();
-    canKill(currentPiece);
+    if (pieces[currentPiece].currentPostion === positionTOBe) {
+      canKill(currentPiece);
+    }
     render();
     sound.play();
   } else {
