@@ -125,7 +125,7 @@ function render() {
     piecesArray[i].innerHTML = `<i class="fa-solid fa-star star"></i>`;
   }
 
-  turnScreen.innerText = "Turn: " + turns[turn];
+  updateTurnScreen();
 }
 
 function checkIfOut(house) {
@@ -154,7 +154,7 @@ function checkIfOut(house) {
   }
   incrementTurn();
 
-  turnScreen.innerText = "Turn: " + turns[turn];
+  updateTurnScreen();
   hasRolled = false;
   btnRoll.classList.add("active");
 }
@@ -164,8 +164,10 @@ function incrementTurn() {
   isInGame = false;
   let loopLimit1;
   let loopNumber1;
+
   turn++;
   turn > 3 ? (turn = 0) : null;
+
   if (turns[turn] === "green") {
     loopNumber1 = 0;
     loopLimit1 = 4;
@@ -196,6 +198,7 @@ function incrementTurn() {
 
   ui();
 }
+
 function canGoInHouse() {
   if (pieces[currentPiece].currentPostion === 2 && turns[turn] === "green") {
     pieces[currentPiece].currentPostion = 53;
@@ -253,10 +256,10 @@ function didWin() {
 btnRoll.addEventListener("click", rollFunction);
 function rollFunction() {
   if (!hasRolled) {
-    roll = Number(inputRoll.value);
-    // roll = Math.floor(Math.random() * 6 + 1);
-    // roll > 6 ? (roll = 6) : null;
-    // roll < 0 ? (roll = 1) : null;
+    // roll = Number(inputRoll.value);
+    roll = Math.floor(Math.random() * 6 + 1);
+    roll > 6 ? (roll = 6) : null;
+    roll < 0 ? (roll = 1) : null;
     screen.innerText = roll;
     hasRolled = true;
     btnRoll.classList.remove("active");
@@ -300,13 +303,13 @@ function checkTurn() {
 function pieceFunction(num, openingPosition) {
   removeEvent();
   currentPiece = num;
-  if (pieces[num].currentPostion >= 89) {
+  if (pieces[currentPiece].currentPostion >= 89) {
     checkTurn();
     return;
   }
-  if (pieces[num].currentPostion > 72) {
+  if (pieces[currentPiece].currentPostion > 72) {
     if (roll === 6) {
-      pieces[num].currentPostion = openingPosition;
+      pieces[currentPiece].currentPostion = openingPosition;
       hasRolled = false;
       btnRoll.classList.add("active");
       render();
@@ -314,7 +317,7 @@ function pieceFunction(num, openingPosition) {
       checkTurn();
     }
   } else {
-    positionTOBe = roll + pieces[num].currentPostion;
+    positionTOBe = roll + pieces[currentPiece].currentPostion;
     intervalForMoveFunction();
   }
 }
@@ -327,22 +330,52 @@ function moveFunction() {
       positionTOBe = positionTOBe - 52;
     }
     sound.src = "move-self.mp3";
-    sound.play();
     canGoInHouse();
     didWin();
+    canKill(currentPiece);
     render();
+    sound.play();
   } else {
     if (roll === 6) {
       clearInterval(interval);
       hasRolled = false;
       btnRoll.classList.add("active");
-      turnScreen.innerText = "Turn: " + turns[turn];
+      updateTurnScreen();
     } else {
       clearInterval(interval);
       incrementTurn();
       hasRolled = false;
       btnRoll.classList.add("active");
-      turnScreen.innerText = "Turn: " + turns[turn];
+      updateTurnScreen();
+    }
+  }
+}
+
+function updateTurnScreen() {
+  turnScreen.innerText = "Turn: " + turns[turn];
+}
+
+function canKill(crrpiece) {
+  for (let i = 0; i < pieces.length; i++) {
+    if (
+      pieces[i].currentPostion === pieces[crrpiece].currentPostion &&
+      pieces[i].team !== pieces[crrpiece].team
+    ) {
+      if (
+        pieces[i].currentPostion === 3 ||
+        pieces[i].currentPostion === 11 ||
+        pieces[i].currentPostion === 16 ||
+        pieces[i].currentPostion === 24 ||
+        pieces[i].currentPostion === 29 ||
+        pieces[i].currentPostion === 37 ||
+        pieces[i].currentPostion === 42 ||
+        pieces[i].currentPostion === 50
+      ) {
+        null;
+      } else {
+        pieces[i].currentPostion = pieces[i].startingPostion;
+        sound.src = "capture.mp3";
+      }
     }
   }
 }

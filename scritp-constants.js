@@ -223,6 +223,7 @@ const pieces = [
     currentPostion: 73,
     html: `<div id="pieceg1" class="piece pieceg"></div>`,
     id: "pieceg1",
+    team: 1,
   },
   {
     pieceName: "g2",
@@ -230,6 +231,7 @@ const pieces = [
     currentPostion: 74,
     html: `<div id="pieceg2" class="piece pieceg" ></div>`,
     id: "pieceg2",
+    team: 1,
   },
   {
     pieceName: "g3",
@@ -237,6 +239,7 @@ const pieces = [
     currentPostion: 75,
     html: `<div id="pieceg3" class="piece pieceg" ></div>`,
     id: "pieceg3",
+    team: 1,
   },
   {
     pieceName: "g4",
@@ -244,6 +247,7 @@ const pieces = [
     currentPostion: 76,
     html: `<div id="pieceg4" class="piece pieceg" ></div>`,
     id: "pieceg4",
+    team: 1,
   },
 
   {
@@ -252,6 +256,7 @@ const pieces = [
     currentPostion: 77,
     html: `<div id="piecey1" class="piece piecey" ></div>`,
     id: "piecey1",
+    team: 2,
   },
   {
     pieceName: "y2",
@@ -259,6 +264,7 @@ const pieces = [
     currentPostion: 78,
     html: `<div id="piecey2" class="piece piecey" ></div>`,
     id: "piecey2",
+    team: 2,
   },
   {
     pieceName: "y3",
@@ -266,6 +272,7 @@ const pieces = [
     currentPostion: 79,
     html: `<div id="piecey3" class="piece piecey" ></div>`,
     id: "piecey3",
+    team: 2,
   },
   {
     pieceName: "y4",
@@ -273,6 +280,7 @@ const pieces = [
     currentPostion: 80,
     html: `<div id="piecey4" class="piece piecey" ></div>`,
     id: "piecey4",
+    team: 2,
   },
 
   {
@@ -281,6 +289,7 @@ const pieces = [
     currentPostion: 81,
     html: `<div id="pieceb1" class="piece pieceb" ></div>`,
     id: "pieceb1",
+    team: 3,
   },
   {
     pieceName: "b2",
@@ -288,6 +297,7 @@ const pieces = [
     currentPostion: 82,
     html: `<div id="pieceb2" class="piece pieceb" ></div>`,
     id: "pieceb2",
+    team: 3,
   },
   {
     pieceName: "b3",
@@ -295,6 +305,7 @@ const pieces = [
     currentPostion: 83,
     html: `<div id="pieceb3" class="piece pieceb" ></div>`,
     id: "pieceb3",
+    team: 3,
   },
   {
     pieceName: "b4",
@@ -302,6 +313,7 @@ const pieces = [
     currentPostion: 84,
     html: `<div id="pieceb4" class="piece pieceb" ></div>`,
     id: "pieceb4",
+    team: 3,
   },
 
   {
@@ -310,6 +322,7 @@ const pieces = [
     currentPostion: 85,
     html: `<div id="piecer1" class="piece piecer" ></div>`,
     id: "piecer1",
+    team: 4,
   },
   {
     pieceName: "r2",
@@ -317,6 +330,7 @@ const pieces = [
     currentPostion: 86,
     html: `<div id="piecer2" class="piece piecer" ></div>`,
     id: "piecer2",
+    team: 4,
   },
   {
     pieceName: "r3",
@@ -324,6 +338,7 @@ const pieces = [
     currentPostion: 87,
     html: `<div id="piecer3" class="piece piecer" ></div>`,
     id: "piecer3",
+    team: 4,
   },
   {
     pieceName: "r4",
@@ -331,6 +346,7 @@ const pieces = [
     currentPostion: 88,
     html: `<div id="piecer4" class="piece piecer" ></div>`,
     id: "piecer4",
+    team: 4,
   },
 ];
 
