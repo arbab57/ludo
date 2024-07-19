@@ -182,7 +182,9 @@ main {
 }
 
 .ui {
-    background-color: #111d99;
+    /* background-color: #111d99; */
+    background-color: #272e7b;
+    border-radius: 5px;
     position: absolute;
     /* top: 0;
     left: -310px; */
@@ -227,10 +229,11 @@ main {
 }
 
 #screen, #turn-screen{
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 500;
     color: white;
     text-align: center;
+    text-transform: capitalize;
 }
 
 #input-roll {
