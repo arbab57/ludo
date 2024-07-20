@@ -1,6 +1,7 @@
+let gameMode;
+
 window.onload = () => {
-  const gameMode = JSON.parse(localStorage.getItem("gamemode"));
-  console.log(gameMode);
+  gameMode = JSON.parse(localStorage.getItem("gamemode"));
 
   if (gameMode === 2) {
     pieces[4].team = 2;
@@ -50,7 +51,7 @@ let scoreboard = [];
 let diceSounds = ["dice1.mp3", "dice2.mp3"];
 
 function intervalForMoveFunction() {
-  interval = setInterval(moveFunction, 350);
+  interval = setInterval(moveFunction, 50);
 }
 
 function removeEvent() {
@@ -76,17 +77,18 @@ function removeEvent() {
 }
 function win() {
   if (score.green === 4) {
-    winnerboard.shift("green");
+    winnerboard.unshift("Green");
   }
   if (score.yellow === 4) {
-    winnerboard.shift("yellow");
+    winnerboard.unshift("Yellow");
   }
   if (score.blue === 4) {
-    winnerboard.shift("blue");
+    winnerboard.unshift("Blue");
   }
   if (score.red === 4) {
-    winnerboard.shift("red");
+    winnerboard.unshift("Red");
   }
+  whoWon();
 }
 
 function ui() {
@@ -134,7 +136,6 @@ function activePiece() {
 
 function render() {
   ui();
-  win();
 
   for (let i = 0; i < squares.length; i++) {
     squares[i].innerHTML = "";
@@ -153,6 +154,8 @@ function render() {
   }
 
   updateTurnScreen();
+
+  whoWon();
 }
 
 function checkIfOut(house) {
@@ -258,24 +261,28 @@ function didWin() {
     pieces[currentPiece].currentPostion = 89;
     positionTOBe = 89;
     score.green++;
+    win();
     return;
   }
   if (pieces[currentPiece].currentPostion >= 63 && turns[turn] === "yellow") {
     pieces[currentPiece].currentPostion = 90;
     positionTOBe = 90;
     score.yellow++;
+    win();
     return;
   }
   if (pieces[currentPiece].currentPostion >= 68 && turns[turn] === "blue") {
     pieces[currentPiece].currentPostion = 91;
     positionTOBe = 91;
     score.blue++;
+    win();
     return;
   }
   if (pieces[currentPiece].currentPostion >= 73 && turns[turn] === "red") {
     pieces[currentPiece].currentPostion = 92;
     positionTOBe = 92;
     score.red++;
+    win();
     return;
   }
 }
@@ -457,4 +464,42 @@ function canKill(crrpiece) {
       }
     }
   }
+}
+
+let playersRemaining;
+playersRemaining = gameMode = 1 ? 2 : 4;
+let greencCalled = false;
+let yellowcCalled = false;
+let blueCalled = false;
+let redcCalled = false;
+
+function whoWon() {
+  if (score.green === 4 && !greencCalled) {
+    playersRemaining--;
+    greencCalled = true;
+  } else if (score.yellow === 4 && !yellowcCalled) {
+    playersRemaining--;
+    yellowcCalled = true;
+  } else if (score.blue === 4 && !blueCalled) {
+    playersRemaining--;
+    blueCalled = true;
+  } else if (score.red === 4 && !redcCalled) {
+    playersRemaining--;
+    redcCalled = true;
+  }
+
+  if (playersRemaining === 1) {
+    document.querySelector("#won").classList.remove("showw");
+    document.getElementById("scoreboard").innerHTML = winnerboard
+      .map((item, index) => {
+        return `             <div class="scorecard">
+      <p>${index + 1}:</p>
+      <p>${item}</p>
+
+  </div>`;
+      })
+      .join("");
+  }
+
+  // console.log("whoWon,", playersRemaining);
 }

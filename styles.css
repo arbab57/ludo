@@ -391,3 +391,73 @@ body {
     opacity: 0;
 }
 
+#won {
+    position: fixed;
+    top: 0;
+    z-index: 777;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111d99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(a4136850.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+#won h1 {
+    color: white;
+    font-size: 3rem;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+   
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#scoreboard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.scorecard {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    background-color: #111d99;
+    padding: 0.4rem ;
+    border-radius: 5px;
+
+}
+
+.showw {
+    display: none !important;
+}
+
+
+.backBTN {
+    text-decoration: none;
+    color: white;
+    background-color: #111d99;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+
+}
+
+.centerr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
