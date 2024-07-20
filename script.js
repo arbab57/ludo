@@ -1,4 +1,30 @@
 window.onload = () => {
+  const gameMode = JSON.parse(localStorage.getItem("gamemode"));
+  console.log(gameMode);
+
+  if (gameMode === 2) {
+    pieces[4].team = 2;
+    pieces[5].team = 2;
+    pieces[6].team = 2;
+    pieces[7].team = 2;
+
+    pieces[12].team = 2;
+    pieces[13].team = 2;
+    pieces[14].team = 2;
+    pieces[15].team = 2;
+  }
+  if (gameMode === 1) {
+    pieces[4].currentPostion = 90;
+    pieces[5].currentPostion = 90;
+    pieces[6].currentPostion = 90;
+    pieces[7].currentPostion = 90;
+
+    pieces[12].currentPostion = 92;
+    pieces[13].currentPostion = 92;
+    pieces[14].currentPostion = 92;
+    pieces[15].currentPostion = 92;
+  }
+
   render();
   btnRoll.classList.add("active");
 };
@@ -24,7 +50,7 @@ let scoreboard = [];
 let diceSounds = ["dice1.mp3", "dice2.mp3"];
 
 function intervalForMoveFunction() {
-  interval = setInterval(moveFunction, 400);
+  interval = setInterval(moveFunction, 350);
 }
 
 function removeEvent() {
