@@ -14,5 +14,5 @@ btn1Players.addEventListener("click", () => {
 function setGameMode(gameMode) {
   localStorage.removeItem("gamemode");
   localStorage.setItem("gamemode", JSON.stringify(gameMode));
-  window.location.replace("http://127.0.0.1:5500/ludo/game.html");
+  window.location.replace("https://arbab57.github.io/ludo/game.html");
 }
