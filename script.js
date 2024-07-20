@@ -51,7 +51,7 @@ let scoreboard = [];
 let diceSounds = ["dice1.mp3", "dice2.mp3"];
 
 function intervalForMoveFunction() {
-  interval = setInterval(moveFunction, 50);
+  interval = setInterval(moveFunction, 350);
 }
 
 function removeEvent() {

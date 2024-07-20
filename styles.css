@@ -461,3 +461,179 @@ body {
     align-items: center;
 
 }
+
+@media only screen and (max-width: 1300px) {
+    .top-l {
+        top: -260px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    .top-r {
+        top: -260px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .bot-l {
+        bottom: -260px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bot-r {
+        bottom: -260px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .con-ludo {
+        width: 100%;
+    }
+    .house {
+        width: 100%;
+    }
+
+    #uibox {
+        padding: 0.8rem;
+        flex-direction: row;
+        height: auto;
+    }
+
+
+    .top-l {
+        top: -70px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    .top-r {
+        top: -70px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .bot-l {
+        bottom: -70px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bot-r {
+        bottom: -70px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    
+
+    #btn-roll {
+        padding: 0.5rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    
+    #screen, #turn-screen{
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: white;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+   
+
+   
+
+
+
+
+
+}
+
+.d-flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 576px) {
+   .d-flex-col-center .d-flex-row {
+    height: 100%;
+   }
+    .house {
+        height: auto;
+    }
+
+       .square {
+        width: 30px;
+        height: 30px;
+    }
+
+    .square-row {
+        width: 30px;
+        height: 100%;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 430px) {
+    .con-pieces-in-house {
+     width: 100px;
+     height: 100px;
+    }
+  
+    .square {
+     width: 22px;
+     
+ }
+
+ 
+ .square-row {
+     width: 22px;
+    
+ }
+
+ .piece {
+    width: 15px;
+    height: 15px;
+ }
+ 
+ }
+
+
+
+@media screen and (max-width: 600px)  {
+    .menu-box  {
+        width: 100%;
+        height: 100%;
+        justify-content: start;
+        gap: 1rem;
+    }
+
+    .logo-box img {
+        width: 100%;
+    }
+}
